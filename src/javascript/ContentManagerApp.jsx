@@ -4,12 +4,14 @@ import Components, {defineComponents, overrideComponents} from "./components/com
 import ContentManager from "./components/ContentManager";
 import ContentListHeader from "./components/list/ContentListHeader";
 import FilesGridSizeSelector from "./components/filesGrid/FilesGridSizeSelector";
+import {LanguageSwitcherDisplay} from "./components/languageSwitcher/LanguageSwitcher";
 import {CssBaseline} from "@material-ui/core";
 
 defineComponents({
     ContentManager: ContentManager,
     ContentListHeader: ContentListHeader,
     FilesGridSizeSelector: FilesGridSizeSelector,
+    LanguageSwitcherDisplay: LanguageSwitcherDisplay
 });
 
 window.overrideCmmComponents = overrideComponents;

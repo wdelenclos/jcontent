@@ -9,6 +9,7 @@ import {translate} from "react-i18next";
 import {connect} from "react-redux";
 import {ProgressOverlay, withNotifications} from "@jahia/react-material";
 import {cmSetLanguage} from "../redux/actions";
+import Components from "../components";
 
 const styles = theme => ({
     typography: {
@@ -152,7 +153,7 @@ class LanguageSwitcher extends React.Component {
                     let displayableLanguages = this.parseSiteLanguages(data);
                     let existingLanguage = this.validateLanguageExists(displayableLanguages, data, lang);
                     if (existingLanguage === true) {
-                        return <LanguageSwitcherDisplay
+                        return <Components.LanguageSwitcherDisplay
                             lang={lang}
                             dark={dark}
                             languages={displayableLanguages}
@@ -241,3 +242,4 @@ LanguageSwitcher = _.flowRight(
 )(LanguageSwitcher);
 
 export default LanguageSwitcher;
+export {LanguageSwitcherDisplay};
