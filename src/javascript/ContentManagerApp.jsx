@@ -6,17 +6,15 @@ import ContentListHeader from "./components/list/ContentListHeader";
 import FilesGridSizeSelector from "./components/filesGrid/FilesGridSizeSelector";
 import {CssBaseline} from "@material-ui/core";
 
-// react is loaded by jnt_template/html/template.content-manager.jsp
+defineComponents({
+    ContentManager: ContentManager,
+    ContentListHeader: ContentListHeader,
+    FilesGridSizeSelector: FilesGridSizeSelector,
+});
+
+window.overrideCmmComponents = overrideComponents;
+
 window.reactRender = function(target, id, dxContext) {
-
-    defineComponents({
-        ContentManager: ContentManager,
-        ContentListHeader: ContentListHeader,
-        FilesGridSizeSelector: FilesGridSizeSelector,
-    });
-
-    overrideComponents(window.customCmmComponents);
-
     ReactDOM.render(
         <React.Fragment>
             <CssBaseline/>
