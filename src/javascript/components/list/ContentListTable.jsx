@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import {VirtualsiteIcon} from '@jahia/icons';
 import {Visibility, Create, Autorenew} from "@material-ui/icons";
-import ContentListHeader from "./ContentListHeader";
+import Components from "../components.js";
 import {Pagination} from "@jahia/react-material";
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
@@ -320,7 +320,7 @@ class ContentListTable extends React.Component {
         return (
             <div className={classes.contentList}>
                 <Table aria-labelledby="tableTitle" data-cm-role="table-content-list">
-                    <ContentListHeader
+                    <Components.ContentListHeader
                         order={order}
                         orderBy={orderBy}
                         onRequestSort={handleSort}

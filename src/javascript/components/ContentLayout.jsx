@@ -16,7 +16,7 @@ import CmButton from "./renderAction/CmButton";
 import Upload from './fileupload/upload';
 import {cmSetPreviewState, CM_PREVIEW_STATES} from "./redux/actions";
 import FilesGrid from './filesGrid/FilesGrid';
-import FilesGridSizeSelector from './filesGrid/FilesGridSizeSelector';
+import Components from './components';
 import FilesGridModeSelector from './filesGrid/FilesGridModeSelector';
 import {valueToSizeTransformation} from './filesGrid/filesGridUtils';
 import {ContentData, contentQueryHandlerByMode} from "./ContentData";
@@ -297,7 +297,7 @@ class ContentLayout extends React.Component {
                         </Grid>
                         <Grid item xs={GRID_PANEL_BUTTONS_SIZE} className={classes.showTree}>
                             {mode === Constants.mode.FILES &&
-                                <FilesGridSizeSelector initValue={4} onChange={(value) => this.setState({filesGridSizeValue: value})}/>
+                                <Components.FilesGridSizeSelector initValue={4} onChange={(value) => this.setState({filesGridSizeValue: value})}/>
                             }
                             {mode === Constants.mode.FILES &&
                                 <FilesGridModeSelector showList={this.state.showList} onChange={() => this.setState({showList: !this.state.showList})}/>

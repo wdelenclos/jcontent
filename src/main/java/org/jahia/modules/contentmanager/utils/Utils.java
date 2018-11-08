@@ -60,6 +60,8 @@ public final class Utils {
      */
     public static final String HEADER_ACTION_LIST_RESOURCES = "Jahia-ActionList-Resources";
 
+    public static final String HEADER_CUSTOM_COMPONENT_RESOURCES = "Jahia-CustomComponent-Resources";
+
     /**
      * Returns a collection of all active bundles, containing action list resources.
      *

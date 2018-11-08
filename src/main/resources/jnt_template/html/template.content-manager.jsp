@@ -20,6 +20,9 @@
 <body style="overflow: hidden; ">
 <template:addResources type="javascript" resources="polyfills.js"/>
 <template:addResources type="javascript" resources="apps/content-manager.js"/>
+<c:forEach items="${cmFunctions:getCustomComponentResources()}" var="customComponentResource">
+    <template:addResources type="javascript" resources="${customComponentResource}"/>
+</c:forEach>
 <c:set var="targetId" value="reactComponent${fn:replace(currentNode.identifier,'-','_')}"/>
 
 <div id="${targetId}">loading..</div>

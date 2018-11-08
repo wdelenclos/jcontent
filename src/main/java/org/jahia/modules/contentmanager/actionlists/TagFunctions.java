@@ -52,6 +52,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.jahia.modules.contentmanager.utils.Utils;
 import org.jahia.osgi.BundleUtils;
+import org.jahia.osgi.FrameworkService;
 import org.jahia.services.SpringContextSingleton;
 import org.jahia.services.render.RenderContext;
 import org.osgi.framework.Bundle;
@@ -60,7 +61,7 @@ public class TagFunctions {
 
     /**
      * Generates the list of actions for the Content and Media Manager.
-     * 
+     *
      * @param renderContext current render context
      * @return a string representation of the JavaScript resources for action lists
      */
@@ -77,7 +78,7 @@ public class TagFunctions {
 
     /**
      * Retrieves a list of namespaces (module names) that contain JavaScript locales.
-     * 
+     *
      * @return a string representation of an array with all i18n namespaces
      */
     public static String getI18nNameSpaces() {
@@ -99,5 +100,22 @@ public class TagFunctions {
                     .getBeanInModulesContext("org.jahia.modules.contentmanager.actionListRenderers");
         }
         return Collections.emptyList();
+    }
+
+    public static Collection<String> getCustomComponentResources() {
+        LinkedHashSet<String> result = new LinkedHashSet<>();
+        for (Bundle bundle : FrameworkService.getBundleContext().getBundles()) {
+            if (bundle.getState() != Bundle.ACTIVE) {
+                continue;
+            }
+            String customComponentResources = bundle.getHeaders().get(Utils.HEADER_CUSTOM_COMPONENT_RESOURCES);
+            if (customComponentResources == null) {
+                continue;
+            }
+            for (String customComponentResource : customComponentResources.split(",")) {
+                result.add(customComponentResource.trim());
+            }
+        }
+        return result;
     }
 }
