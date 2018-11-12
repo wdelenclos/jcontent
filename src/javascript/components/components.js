@@ -9,8 +9,8 @@ function defineComponents(components) {
 
 function overrideComponents(overridingComponents) {
     _.forEach(overridingComponents, (overridingComponent, componentName) => {
-        if (overridingComponent.setOverriddenComponent) {
-            overridingComponent.setOverriddenComponent(Components[componentName]);
+        if (overridingComponent.onOverride) {
+            overridingComponent.onOverride(Components[componentName]);
         }
     });
     Components = _.assign(Components, overridingComponents);
