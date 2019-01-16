@@ -20,6 +20,7 @@ import contentManagerReduxStore from './ContentManager.redux-store';
 import PushEventHandler from './PushEventHandler';
 import initActions from './actions/initActions';
 import contentManagerStyleConstants from './ContentManager.style-constants';
+import EditLayout from './EditLayout';
 
 export default class ContentManager extends React.Component {
     constructor(props) {
@@ -103,6 +104,10 @@ export default class ContentManager extends React.Component {
                                                                     <Route path={`${props.match.url}/apps`}
                                                                            render={() =>
                                                                                <IFrameLayout contextPath={dxContext.contextPath} workspace={dxContext.workspace}/>
+                                                                    }/>
+                                                                    <Route path={`${props.match.url}/edit`}
+                                                                           render={() =>
+                                                                               <EditLayout/>
                                                                     }/>
                                                                     <Route render={() =>
                                                                         <ContentLayout/>

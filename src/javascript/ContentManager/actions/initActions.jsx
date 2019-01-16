@@ -63,6 +63,14 @@ function initActions(actionsRegistry) {
         hideOnNodeTypes: ['jnt:virtualsite'],
         hideForPaths: [PATH_FILES_ITSELF, PATH_CONTENTS_ITSELF]
     });
+    actionsRegistry.add('contentEdit', routerAction, {
+        buttonIcon: <Edit/>,
+        buttonLabel: 'label.contentManager.contentPreview.contentEdit',
+        target: ['contentActions:2.5'],
+        showOnNodeTypes: ['qant:allFields'],
+        hideForPaths: [PATH_CONTENTS_ITSELF],
+        mode: 'edit'
+    });
     actionsRegistry.add('preview', previewAction, {
         buttonIcon: <Visibility/>,
         buttonLabel: 'label.contentManager.contentPreview.preview',

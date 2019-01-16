@@ -188,7 +188,8 @@
                 "publishAllInAllLanguages": "Publier tout sous <em>{{displayName}}</em> dans toutes les langues",
                 "collapse": "Réduire",
                 "unPublishedBy": "Dépublié par {{userName}} le",
-                "moreOptions": "Plus d'options"
+                "moreOptions": "Plus d'options",
+                "contentEdit": "Editer le contenu"
             },
             "contentTypes": {
                 "error": {
