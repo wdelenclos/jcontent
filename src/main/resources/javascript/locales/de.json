@@ -207,7 +207,10 @@
                     "loading": "Fehler beim Abrufen der Aktionsdaten: {{details}}"
                 }
             },
-            "browseFolders": "Ordner durchsuchen"
+            "browseFolders": "Ordner durchsuchen",
+            "edit": {
+                "title": "Inhalt bearbeiten"
+            }
         }
     }
 }

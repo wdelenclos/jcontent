@@ -207,7 +207,10 @@
                     "loading": "Erreur lors de l'extraction des données d'action: {{details}}"
                 }
             },
-            "browseFolders": "Parcourir les répertoires"
+            "browseFolders": "Parcourir les répertoires",
+            "edit": {
+                "title": "Éditer le contenu"
+            }
         }
     }
 }
