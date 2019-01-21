@@ -1,11 +1,24 @@
 import React from 'react';
-import {TextField} from '@material-ui/core';
+import {TextField, withStyles} from '@material-ui/core';
+import {compose} from 'react-apollo';
 
-export default class Text extends React.Component {
+const styles = theme => ({
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 250,
+        '& label': {
+            color: theme.palette.text.secondary
+        }
+    }
+});
+
+export class Text extends React.Component {
     render() {
-        let {field, values, handleChange, handleBlur} = this.props;
+        let {field, values, handleChange, handleBlur, classes} = this.props;
         return (
             <TextField
+                className={classes.textField}
                 id={field.definition.name}
                 name={field.definition.name}
                 label={field.definition.name}
@@ -16,3 +29,7 @@ export default class Text extends React.Component {
         );
     }
 }
+
+export default compose(
+    withStyles(styles)
+)(Text);
