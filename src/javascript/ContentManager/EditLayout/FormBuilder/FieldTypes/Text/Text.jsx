@@ -15,7 +15,9 @@ const styles = theme => ({
 
 export class Text extends React.Component {
     render() {
-        let {field, values, handleChange, handleBlur, classes} = this.props;
+        let {field, classes} = this.props;
+        let {values, handleChange, handleBlur} = this.props.formProps;
+
         return (
             <TextField
                 className={classes.textField}

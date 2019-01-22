@@ -211,7 +211,8 @@
             },
             "browseFolders": "Browse Folders",
             "edit": {
-                "title": "Edit content"
+                "title": "Edit content",
+                "save": "Save"
             }
         }
     }

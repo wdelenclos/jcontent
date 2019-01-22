@@ -209,7 +209,8 @@
             },
             "browseFolders": "Parcourir les répertoires",
             "edit": {
-                "title": "Éditer le contenu"
+                "title": "Éditer le contenu",
+                "save": "Sauvegarder"
             }
         }
     }

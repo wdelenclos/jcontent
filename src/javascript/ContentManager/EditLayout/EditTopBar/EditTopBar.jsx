@@ -2,6 +2,7 @@ import React from 'react';
 import {withStyles, Typography, Grid} from '@material-ui/core';
 import {translate} from 'react-i18next';
 import {compose} from 'react-apollo';
+import {buttonRenderer, DisplayActions} from '@jahia/react-material';
 
 const styles = theme => ({
     root: {
@@ -17,7 +18,8 @@ const styles = theme => ({
     },
     topBar: {
         width: 'min-content',
-        alignSelf: 'flex-end',
+        display: 'flex',
+        flexDirection: 'row-reverse',
         paddingTop: theme.spacing.unit * 3
     },
     topBarGrid: {
@@ -25,12 +27,17 @@ const styles = theme => ({
         '& button': {
             margin: '0px'
         }
+    },
+    buttons: {
+        '&&': {
+            marginLeft: theme.spacing.unit
+        }
     }
 });
 
 export class EditTopBar extends React.Component {
     render() {
-        const {classes, t} = this.props;
+        const {classes, t, formProps} = this.props;
 
         return (
             <div className={classes.root} data-cm-role="cm-top-bar">
@@ -45,7 +52,9 @@ export class EditTopBar extends React.Component {
                     </Grid>
                     <Grid item xs={1}/>
                     <Grid item xs={9} className={classes.topBar}>
-                        <div>Todo save action</div>
+                        <DisplayActions target="editHeaderActions"
+                                        context={{formProps: formProps}}
+                                        render={buttonRenderer({variant: 'contained', color: 'primary', size: 'small', classes: {root: classes.buttons}}, true)}/>
                     </Grid>
                 </Grid>
             </div>

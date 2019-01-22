@@ -209,7 +209,8 @@
             },
             "browseFolders": "Ordner durchsuchen",
             "edit": {
-                "title": "Inhalt bearbeiten"
+                "title": "Inhalt bearbeiten",
+                "save": "Sparen"
             }
         }
     }
