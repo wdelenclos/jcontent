@@ -37,7 +37,7 @@ const styles = theme => ({
 
 export class EditTopBar extends React.Component {
     render() {
-        const {classes, t, formProps} = this.props;
+        const {classes, t} = this.props;
 
         return (
             <div className={classes.root} data-cm-role="cm-top-bar">
@@ -53,7 +53,7 @@ export class EditTopBar extends React.Component {
                     <Grid item xs={1}/>
                     <Grid item xs={9} className={classes.topBar}>
                         <DisplayActions target="editHeaderActions"
-                                        context={{formProps: formProps}}
+                                        context={{}}
                                         render={buttonRenderer({variant: 'contained', color: 'primary', size: 'small', classes: {root: classes.buttons}}, true)}/>
                     </Grid>
                 </Grid>

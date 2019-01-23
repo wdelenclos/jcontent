@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import {PredefinedFragments} from '@jahia/apollo-dx';
 
 const NodeQuery = gql`
-    query getFiles($path:String!, $language:String!) {
+    query getNodeProperties($path:String!, $language:String!) {
         jcr {
             result:nodeByPath(path: $path) {
                 ...NodeCacheRequiredFields
@@ -11,6 +11,9 @@ const NodeQuery = gql`
                     name
                 }
                 properties(names: ["sharedSmallText"]) {
+                    definition {
+                        requiredType
+                    }
                     name
                     value
                 }

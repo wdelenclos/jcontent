@@ -1,16 +1,20 @@
 import React from 'react';
-import {compose} from 'react-apollo';
+import {compose, withApollo} from 'react-apollo';
 import {Grid, Typography, withStyles, Paper} from '@material-ui/core';
-import {Trans} from 'react-i18next';
+import {Trans, translate} from 'react-i18next';
 import EditTopBar from './EditTopBar';
 import FormBuilder from './FormBuilder';
-import {actionsRegistry} from '@jahia/react-material';
+import {actionsRegistry, withNotifications} from '@jahia/react-material';
 import initEditActions from './actions/initEditActions';
 import EditLayoutConstants from './EditLayout.constants';
 import {Formik} from 'formik';
 import FormDefinitions from './FormBuilder/FormDefinitions';
 import * as _ from 'lodash';
 import NodeData from './FormBuilder/NodeData';
+import {getPropertiesToSave} from './EditLayout.utils';
+import {SavePropertiesMutation} from './FormBuilder/NodeData/NodeData.gql-mutation';
+import {connect} from 'react-redux';
+import {NodeQuery} from './FormBuilder/NodeData/NodeData.gql-queries';
 
 const styles = theme => ({
     topBar: {
@@ -63,7 +67,7 @@ export class EditLayout extends React.Component {
     }
 
     render() {
-        const {classes} = this.props;
+        const {classes, client, notificationContext, t, path, lang} = this.props;
         return (
             <NodeData>
                 {({nodeData}) => {
@@ -82,7 +86,7 @@ export class EditLayout extends React.Component {
                         return (
                             <Formik
                                 initialValues={initialValues}
-                                render={formProps => {
+                                render={() => {
                                     return (
                                         <React.Fragment>
                                             <div className={classes.metaNav}>
@@ -90,14 +94,14 @@ export class EditLayout extends React.Component {
                                             </div>
                                             <Grid container spacing={0}>
                                                 <Grid item xs={GRID_SIZE} className={classes.topBar}>
-                                                    <EditTopBar formProps={formProps}/>
+                                                    <EditTopBar/>
                                                 </Grid>
                                             </Grid>
 
                                             <div className={classes.appFrame}>
                                                 <div className={classes.mainContainer}>
                                                     <Paper className={classes.formContainer}>
-                                                        <FormBuilder fields={fields} formProps={formProps}/>
+                                                        <FormBuilder fields={fields}/>
                                                     </Paper>
                                                 </div>
                                             </div>
@@ -107,11 +111,32 @@ export class EditLayout extends React.Component {
                                 onSubmit={(values, actions) => {
                                     switch (values[EditLayoutConstants.systemFields.SYSTEM_SUBMIT_OPERATION]) {
                                         case EditLayoutConstants.submitOperation.SAVE:
-                                            console.log('SAVE: ' + JSON.stringify(values, null, 2));
-                                            actions.setSubmitting(false);
+                                            client.mutate({
+                                                variables: {
+                                                    path: nodeData.path,
+                                                    properties: getPropertiesToSave(values, fields)
+                                                },
+                                                mutation: SavePropertiesMutation,
+                                                refetchQueries: [
+                                                    {
+                                                        query: NodeQuery,
+                                                        variables: {
+                                                            path: path,
+                                                            language: lang
+                                                        }
+                                                    }
+                                                ]
+                                            }).then(() => {
+                                                notificationContext.notify(t('label.contentManager.edit.action.save.success'), ['closeButton']);
+                                                actions.setSubmitting(false);
+                                            }, error => {
+                                                console.error(error);
+                                                notificationContext.notify(t('label.contentManager.edit.action.save.error'), ['closeButton']);
+                                                actions.setSubmitting(false);
+                                            });
                                             break;
                                         case EditLayoutConstants.submitOperation.SAVE_PUBLISH:
-                                            console.log('TODO SAVE_PUBLISH: ' + JSON.stringify(values, null, 2));
+                                            console.log('TODO SAVE_PUBLISH');
                                             actions.setSubmitting(false);
                                             break;
                                         default:
@@ -128,6 +153,15 @@ export class EditLayout extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+    path: state.path,
+    lang: state.language
+});
+
 export default compose(
-    withStyles(styles)
+    translate(),
+    withNotifications(),
+    withStyles(styles),
+    connect(mapStateToProps),
+    withApollo
 )(EditLayout);

@@ -1,12 +1,12 @@
 import {composeActions} from '@jahia/react-material';
-import requirementsAction from '../../actions/requirementsAction';
 import EditLayoutConstants from '../EditLayout.constants';
+import {withFormikAction} from './withFormikAction';
 
-export default composeActions(requirementsAction, {
+export default composeActions(withFormikAction, {
     init: () => {},
     onClick: context => {
-        if (context.formProps) {
-            let {setFieldValue, submitForm} = context.formProps;
+        if (context.formik) {
+            let {setFieldValue, submitForm} = context.formik;
             if (context.submitOperation) {
                 setFieldValue(EditLayoutConstants.systemFields.SYSTEM_SUBMIT_OPERATION, context.submitOperation, false);
             }

@@ -210,7 +210,13 @@
             "browseFolders": "Ordner durchsuchen",
             "edit": {
                 "title": "Inhalt bearbeiten",
-                "save": "Sparen"
+                "action": {
+                    "save": {
+                        "name": "Sparen",
+                        "success": "Inhalt wurde erfolgreich gespeichert",
+                        "error": "Beim Speichern des Inhalts ist ein Fehler aufgetreten"
+                    }
+                }
             }
         }
     }

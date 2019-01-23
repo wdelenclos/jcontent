@@ -1,6 +1,7 @@
 import React from 'react';
 import {TextField, withStyles} from '@material-ui/core';
 import {compose} from 'react-apollo';
+import {connect} from 'formik';
 
 const styles = theme => ({
     textField: {
@@ -16,7 +17,7 @@ const styles = theme => ({
 export class Text extends React.Component {
     render() {
         let {field, classes} = this.props;
-        let {values, handleChange, handleBlur} = this.props.formProps;
+        let {values, handleChange, handleBlur} = this.props.formik;
 
         return (
             <TextField
@@ -33,5 +34,6 @@ export class Text extends React.Component {
 }
 
 export default compose(
+    connect,
     withStyles(styles)
 )(Text);

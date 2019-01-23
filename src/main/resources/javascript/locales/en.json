@@ -212,7 +212,13 @@
             "browseFolders": "Browse Folders",
             "edit": {
                 "title": "Edit content",
-                "save": "Save"
+                "action": {
+                    "save": {
+                        "name": "Save",
+                        "success": "Content successfully saved",
+                        "error": "An error occurred when saving the content"
+                    }
+                }
             }
         }
     }

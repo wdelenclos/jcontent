@@ -210,7 +210,13 @@
             "browseFolders": "Parcourir les répertoires",
             "edit": {
                 "title": "Éditer le contenu",
-                "save": "Sauvegarder"
+                "action": {
+                    "save": {
+                        "name": "Sauvegarder",
+                        "success": "Contenu enregistré avec succès",
+                        "error": "Une erreur s'est produite lors de l'enregistrement du contenu"
+                    }
+                }
             }
         }
     }

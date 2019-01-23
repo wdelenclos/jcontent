@@ -5,7 +5,7 @@ import submitAction from './submitAction';
 
 function initEditActions(actionsRegistry) {
     actionsRegistry.add('submitSave', submitAction, {
-        buttonLabel: 'label.contentManager.edit.save',
+        buttonLabel: 'label.contentManager.edit.action.save.name',
         buttonIcon: <Save/>,
         target: ['editHeaderActions:1'],
         submitOperation: EditLayoutConstants.submitOperation.SAVE
