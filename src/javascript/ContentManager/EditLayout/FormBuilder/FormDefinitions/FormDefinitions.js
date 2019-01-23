@@ -1,4 +1,4 @@
-let QAAllFieldFormDefinition = {
+const QAAllFieldFormDefinition = {
     nodeType: 'qant:allFields',
     targets: [
         {
@@ -8,13 +8,18 @@ let QAAllFieldFormDefinition = {
                     name: 'sharedSmallText',
                     fieldType: 'Text',
                     i18n: false
+                },
+                {
+                    name: 'sharedBigtext',
+                    fieldType: 'RichText',
+                    i18n: false
                 }
             ]
         }
     ]
 };
 
-let FormDefinitions = {
+const FormDefinitions = {
     'qant:allFields': QAAllFieldFormDefinition
 };
 

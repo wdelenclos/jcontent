@@ -10,7 +10,7 @@ const NodeQuery = gql`
                 primaryNodeType {
                     name
                 }
-                properties(names: ["sharedSmallText"]) {
+                properties(names: ["sharedSmallText", "sharedBigtext"]) {
                     definition {
                         requiredType
                     }

@@ -1,7 +1,9 @@
 import Text from './Text';
+import RichText from './RichText';
 
-let FieldTypes = {
-    Text: Text
+const FieldTypes = {
+    Text: Text,
+    RichText: RichText
 };
 
 export default FieldTypes;

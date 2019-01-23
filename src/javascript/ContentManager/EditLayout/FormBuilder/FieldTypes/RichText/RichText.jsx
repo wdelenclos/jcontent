@@ -7,14 +7,16 @@ const styles = theme => ({
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        width: 250,
+        width: 500,
         '& label': {
             color: theme.palette.text.secondary
         }
     }
 });
 
-export class Text extends React.Component {
+// TODO: Integrate CKEditor to replace the TextField component
+
+export class RichText extends React.Component {
     render() {
         let {field, classes} = this.props;
         let {values, handleChange, handleBlur} = this.props.formik;
@@ -41,4 +43,4 @@ export class Text extends React.Component {
 export default compose(
     connect,
     withStyles(styles)
-)(Text);
+)(RichText);
