@@ -37,7 +37,7 @@ const styles = theme => ({
 
 export class EditTopBar extends React.Component {
     render() {
-        const {classes, t} = this.props;
+        const {classes, t, title} = this.props;
 
         return (
             <div className={classes.root} data-cm-role="cm-top-bar">
@@ -47,7 +47,7 @@ export class EditTopBar extends React.Component {
                             {t('label.contentManager.edit.title')}
                         </Typography>
                         <Typography variant="h5" color="inherit" className={classes.typoTitle}>
-                            TODO display name of content
+                            {title}
                         </Typography>
                     </Grid>
                     <Grid item xs={1}/>

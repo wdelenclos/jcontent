@@ -94,7 +94,7 @@ export class EditLayout extends React.Component {
                                             </div>
                                             <Grid container spacing={0}>
                                                 <Grid item xs={GRID_SIZE} className={classes.topBar}>
-                                                    <EditTopBar/>
+                                                    <EditTopBar title={nodeData.displayName}/>
                                                 </Grid>
                                             </Grid>
 
