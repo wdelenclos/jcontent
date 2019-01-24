@@ -15,15 +15,15 @@ export class RichText extends React.Component {
         const {values} = this.props.formik;
 
         const onEditorChange = evt => {
-            values[field.definition.name] = evt.editor.getData();
+            values[field.formDefinition.name] = evt.editor.getData();
         };
 
         return (
             <div>
-                <h3>{field.definition.name}</h3>
+                <h3>{field.formDefinition.name}</h3>
 
                 <CKEditor
-                    data={values[field.definition.name]}
+                    data={values[field.formDefinition.name]}
                     onChange={onEditorChange}
                 />
 

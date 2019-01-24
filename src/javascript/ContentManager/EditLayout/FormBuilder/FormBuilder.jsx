@@ -9,8 +9,8 @@ export class FormBuilder extends React.Component {
         return (
             <form onSubmit={formik.handleSubmit}>
                 {fields.map(field => {
-                    let FieldComponent = FieldTypes[field.definition.fieldType];
-                    return (<FieldComponent key={field.definition.name} field={field}/>);
+                    let FieldComponent = FieldTypes[field.formDefinition.fieldType];
+                    return (<FieldComponent key={field.formDefinition.name} field={field}/>);
                 })}
             </form>);
     }

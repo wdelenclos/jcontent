@@ -23,10 +23,10 @@ export class Text extends React.Component {
             <div>
                 <TextField
                     className={classes.textField}
-                    id={field.definition.name}
-                    name={field.definition.name}
-                    label={field.definition.name}
-                    value={values[field.definition.name]}
+                    id={field.formDefinition.name}
+                    name={field.formDefinition.name}
+                    label={field.formDefinition.name}
+                    value={values[field.formDefinition.name]}
                     onChange={handleChange}
                     onBlur={handleBlur}
                 />

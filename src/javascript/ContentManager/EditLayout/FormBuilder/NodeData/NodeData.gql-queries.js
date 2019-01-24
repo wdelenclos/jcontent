@@ -7,13 +7,14 @@ const NodeQuery = gql`
             result:nodeByPath(path: $path) {
                 ...NodeCacheRequiredFields
                 displayName(language: $language)
-                primaryNodeType {
+                primaryNodeType { 
                     name
-                }
-                properties(names: ["sharedSmallText", "sharedBigtext"]) {
-                    definition {
+                    properties {
+                        name
                         requiredType
                     }
+                }
+                properties(names: ["sharedSmallText", "sharedBigtext"]) {
                     name
                     value
                 }

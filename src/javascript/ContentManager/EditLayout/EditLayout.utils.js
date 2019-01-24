@@ -7,10 +7,10 @@ function isSystemField(fieldKey) {
 
 function getPropertiesToSave(formValues, fields) {
     return _.map(_.filter(_.keys(formValues), key => !isSystemField(key)), key => {
-        let field = _.find(fields, {definition: {name: key}});
+        let field = _.find(fields, {formDefinition: {name: key}});
         return {
             name: key,
-            type: field.data.definition.requiredType,
+            type: field.jcrDefinition.requiredType,
             value: formValues[key]
         };
     });

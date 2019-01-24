@@ -76,12 +76,13 @@ export class EditLayout extends React.Component {
                     if (jsonFormDefinition) {
                         let fields = _.map(_.find(jsonFormDefinition.targets, {name: 'content'}).fields, fieldDefinition => {
                             return {
-                                definition: fieldDefinition,
+                                formDefinition: fieldDefinition,
+                                jcrDefinition: _.find(nodeData.primaryNodeType.properties, {name: fieldDefinition.name}),
                                 data: _.find(nodeData.properties, {name: fieldDefinition.name})
                             };
                         });
 
-                        let initialValues = _.mapValues(_.keyBy(fields, 'definition.name'), 'data.value');
+                        let initialValues = _.mapValues(_.keyBy(fields, 'formDefinition.name'), 'data.value');
 
                         return (
                             <Formik
