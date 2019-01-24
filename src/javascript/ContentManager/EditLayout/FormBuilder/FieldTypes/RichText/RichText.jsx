@@ -1,36 +1,30 @@
 import React from 'react';
-import {TextField, withStyles} from '@material-ui/core';
 import {compose} from 'react-apollo';
 import {connect} from 'formik';
-
-const styles = theme => ({
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 500,
-        '& label': {
-            color: theme.palette.text.secondary
-        }
-    }
-});
-
-// TODO: Integrate CKEditor to replace the TextField component
+import CKEditor from 'ckeditor4-react';
 
 export class RichText extends React.Component {
+    constructor(props) {
+        super(props);
+
+        CKEditor.editorUrl = window.CKEDITOR_BASEPATH + '/ckeditor.js';
+    }
+
     render() {
-        let {field, classes} = this.props;
-        let {values, handleChange, handleBlur} = this.props.formik;
+        const {field} = this.props;
+        const {values} = this.props.formik;
+
+        const onEditorChange = evt => {
+            values[field.definition.name] = evt.editor.getData();
+        };
 
         return (
             <div>
-                <TextField
-                    className={classes.textField}
-                    id={field.definition.name}
-                    name={field.definition.name}
-                    label={field.definition.name}
-                    value={values[field.definition.name]}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                <h3>{field.definition.name}</h3>
+
+                <CKEditor
+                    data={values[field.definition.name]}
+                    onChange={onEditorChange}
                 />
 
                 <br/>
@@ -42,5 +36,4 @@ export class RichText extends React.Component {
 
 export default compose(
     connect,
-    withStyles(styles)
 )(RichText);

@@ -1660,6 +1660,14 @@ circular-json@^0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
 
+ckeditor4-react@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ckeditor4-react/-/ckeditor4-react-0.1.0.tgz#d2fdff7c94cd561792ff360fcc74fd227422ee27"
+  integrity sha512-1nydLwrqVHbj0yvu5sS+hZHtaD/MI8vsZqBkOyBZ+VHn/nhauIWpKd0gHGNLh7+DaFu46VibS+b5L5cntES3qA==
+  dependencies:
+    load-script "^1.0.0"
+    prop-types "^15.6.2"
+
 class-utils@^0.3.5:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/class-utils/-/class-utils-0.3.6.tgz#f93369ae8b9a7ce02fd41faad0ca83033190c463"
@@ -3594,6 +3602,11 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+load-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
+  integrity sha1-BJGTngvuVkPuSUp+PaPSuscMbKQ=
 
 loader-fs-cache@^1.0.0:
   version "1.0.1"
