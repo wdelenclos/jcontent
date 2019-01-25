@@ -12,10 +12,10 @@ export class RichText extends React.Component {
 
     render() {
         const {field} = this.props;
-        const {values} = this.props.formik;
+        const {values, setFieldValue} = this.props.formik;
 
         const onEditorChange = evt => {
-            values[field.formDefinition.name] = evt.editor.getData();
+            setFieldValue(field.formDefinition.name, evt.editor.getData(), true);
         };
 
         return (
