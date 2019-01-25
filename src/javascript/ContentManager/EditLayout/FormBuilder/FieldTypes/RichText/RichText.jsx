@@ -24,6 +24,7 @@ export class RichText extends React.Component {
 
                 <CKEditor
                     data={values[field.formDefinition.name]}
+                    config={{toolbar: 'Mini'}}
                     onChange={onEditorChange}
                 />
 
