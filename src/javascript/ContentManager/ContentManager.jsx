@@ -70,6 +70,8 @@ class ContentManager extends React.Component {
 
     render() {
         let {dxContext, t} = this.props;
+        // Load extensions
+        let extensions = registry.find({type: 'extension', target: 'cmm'}).map(extension => extension.component);
 
         let apolloClient = client({
             contextPath: dxContext.contextPath,
@@ -88,6 +90,7 @@ class ContentManager extends React.Component {
                                         <ConnectedRouter history={this.getHistory(dxContext, t)}>
                                             <AppLayout dxContext={dxContext}/>
                                         </ConnectedRouter>
+                                        {extensions.map(Extension => <Extension key={Extension.name}/>)}
                                         <Upload uploadUpdateCallback={status => {
                                                     if (status && status.uploading === 0) {
                                                         const refetchCallbacks = registry.find({type: 'refetch-upload'});

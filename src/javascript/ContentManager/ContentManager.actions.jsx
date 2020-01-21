@@ -27,6 +27,7 @@ import {
     ContentCut,
     ContentPaste,
     DeleteRestore,
+    DeveloperBoard,
     DotsVertical,
     FileUpload,
     FolderMultipleImage,
@@ -413,6 +414,15 @@ function contentManagerActions(actionsRegistry, t) {
         target: ['contentActions:2.2'],
         showOnNodeTypes: ['jnt:file'],
         hideForPaths: [PATH_FILES_ITSELF]
+    });
+    // This button have to be moved to edit mode but must not remains here
+    actionsRegistry.add('edit-mode', routerAction, {
+        buttonLabel: 'Edit Mode',
+        actionPath: '/edit/edit-mode',
+        target: ['leftMenuActions:0.5'],
+        buttonIcon: <DeveloperBoard/>,
+        mode: 'apps',
+        iframeUrl: ':context/cms/edit/:workspace/:lang/sites/:site/home.html'
     });
 }
 
